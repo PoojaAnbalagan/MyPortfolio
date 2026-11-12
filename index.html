@@ -96,15 +96,37 @@
 html{scroll-padding-top:4.5rem;max-width:100%;overflow-x:hidden}
 body{max-width:100%;overflow-x:hidden}
 main{padding-bottom:4rem!important}
-.topnav{position:sticky;top:0;z-index:60;background:rgb(var(--t-ink)/.72);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
-.topnav-in{display:flex;align-items:center;gap:.75rem;max-width:80rem;margin:0 auto;padding:.6rem 1rem}
+.topnav{position:sticky;top:0;z-index:60;background:rgb(var(--t-ink)/.78);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+.topnav-in{display:flex;align-items:center;justify-content:center;position:relative;max-width:80rem;margin:0 auto;padding:.55rem 1.5rem}
 @media (min-width:1536px){.topnav-in{max-width:96rem}}
-.brand{font:700 .9rem Poppins,sans-serif;color:var(--paper);white-space:nowrap;display:flex;align-items:center;gap:.25rem}
-.brand span{color:rgb(var(--k-ml))}
-:root[data-theme=light] .brand{color:var(--ink)}
+.brand{display:none!important}
+
+/* Desktop Navigation: Centered in Header */
+.desktop-nav{display:flex;align-items:center;justify-content:center;margin:0 auto}
+.desktop-nav ul{display:flex;align-items:center;gap:.35rem;padding:0;margin:0;list-style:none}
+.desktop-nav a{display:inline-flex;align-items:center;gap:.45rem;padding:.42rem .95rem;border-radius:9999px;font-size:.82rem;font-weight:500;color:var(--mut);border:1px solid transparent;text-decoration:none;transition:all .2s cubic-bezier(.2,.8,.2,1);white-space:nowrap}
+.desktop-nav a .dock-ic{width:1.05rem;height:1.05rem;stroke:currentColor;stroke-width:2}
+.desktop-nav a:hover{color:var(--paper);background:rgb(var(--t-paper)/.08)}
+:root[data-theme=light] .desktop-nav a:hover{color:var(--ink);background:rgb(var(--t-ink)/.06)}
+.desktop-nav a[aria-current=true]{color:rgb(var(--k-ml));background:rgb(var(--k-ml)/.16);border-color:rgb(var(--k-ml)/.4);box-shadow:0 2px 10px -2px rgb(var(--k-ml)/.35);font-weight:700}
+:root[data-theme=light] .desktop-nav a[aria-current=true]{color:color-mix(in srgb,rgb(var(--k-ml)) 75%,#000);background:rgb(var(--k-ml)/.14);border-color:rgb(var(--k-ml)/.45)}
+.desktop-nav a[aria-current=true] .dock-ic{stroke:rgb(var(--k-ml));transform:scale(1.05)}
+:root[data-theme=light] .desktop-nav a[aria-current=true] .dock-ic{stroke:color-mix(in srgb,rgb(var(--k-ml)) 75%,#000)}
+
+.nav-actions{position:absolute;right:1.5rem;display:flex;align-items:center;gap:.5rem}
+.cv-btn{display:inline-flex;align-items:center;justify-content:center;padding:.42rem .9rem;border-radius:999px;background:#fff;color:#000;font-size:.8rem;font-weight:700;white-space:nowrap}
+.theme-btn{display:grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:999px;border:1px solid var(--line2);color:var(--mut);touch-action:manipulation}
+.theme-btn:hover{color:#fff;border-color:var(--paper)}.i-moon{display:none}
+:root[data-theme=light] .i-sun{display:none}:root[data-theme=light] .i-moon{display:block}
+
+/* Desktop: hide mobile bottom dock */
+@media (min-width:641px){
+  .dock{display:none!important}
+}
+
 .dock-ic{display:block;width:1.2rem;height:1.2rem;stroke:currentColor;stroke-width:2}
-.dock{position:fixed!important;bottom:0!important;left:0!important;right:0!important;z-index:95!important;background:rgb(var(--t-ink)/.94)!important;-webkit-backdrop-filter:blur(24px) saturate(180%)!important;backdrop-filter:blur(24px) saturate(180%)!important;border-top:1px solid rgba(255,255,255,.12)!important;box-shadow:0 -8px 30px rgba(0,0,0,.5)!important;padding:.35rem .25rem calc(.35rem + env(safe-area-inset-bottom,0px))!important;margin:0!important;width:100%!important}
-:root[data-theme=light] .dock{background:rgba(255,255,255,.95)!important;border-top-color:var(--line)!important;box-shadow:0 -8px 25px rgba(0,0,0,.08)!important}
+.dock{position:fixed;bottom:0;left:0;right:0;z-index:95;background:rgb(var(--t-ink)/.94);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border-top:1px solid rgba(255,255,255,.12);box-shadow:0 -8px 30px rgba(0,0,0,.5);padding:.35rem .25rem calc(.35rem + env(safe-area-inset-bottom,0px));margin:0;width:100%}
+:root[data-theme=light] .dock{background:rgba(255,255,255,.95);border-top-color:var(--line);box-shadow:0 -8px 25px rgba(0,0,0,.08)}
 .dock ul{display:flex!important;width:100%!important;max-width:32rem!important;margin:0 auto!important;justify-content:space-around!important;align-items:center!important;padding:0!important;gap:.12rem!important}
 .dock li{flex:1!important;display:flex!important;justify-content:center!important;margin:0!important}
 .dock a{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;padding:.32rem .15rem!important;border-radius:.85rem!important;width:100%!important;max-width:4.2rem!important;min-height:2.85rem!important;font-size:.65rem!important;font-weight:500!important;letter-spacing:.01em!important;color:var(--dim)!important;background:transparent!important;border:1px solid transparent!important;transition:all .2s cubic-bezier(.2,.8,.2,1)!important;gap:.16rem!important;text-decoration:none!important;white-space:nowrap!important}
@@ -115,20 +137,12 @@ main{padding-bottom:4rem!important}
 :root[data-theme=light] .dock a[aria-current=true] .dock-ic{stroke:color-mix(in srgb,rgb(var(--k-ml)) 75%,#000)!important}
 .dock a:hover{color:var(--paper)!important}
 :root[data-theme=light] .dock a:hover{color:var(--ink)!important}
-@media (min-width:641px){
-  .dock{bottom:1.25rem!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:auto!important;max-width:max-content!important;border-radius:9999px!important;border:1px solid rgba(255,255,255,.14)!important;box-shadow:0 12px 40px rgba(0,0,0,.6)!important;padding:.35rem .75rem!important}
-  .dock ul{gap:.3rem!important;max-width:none!important}
-  .dock a{flex-direction:row!important;gap:.4rem!important;font-size:.82rem!important;padding:.42rem .85rem!important;border-radius:9999px!important;max-width:none!important;min-height:auto!important}
-  .dock-ic{width:1.05rem!important;height:1.05rem!important}
-}
-.nav-actions{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
-.cv-btn{display:inline-flex;align-items:center;justify-content:center;padding:.42rem .9rem;border-radius:999px;background:#fff;color:#000;font-size:.8rem;font-weight:700;white-space:nowrap}
-.theme-btn{display:grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:999px;border:1px solid var(--line2);color:var(--mut);touch-action:manipulation}
-.theme-btn:hover{color:#fff;border-color:var(--paper)}.i-moon{display:none}
-:root[data-theme=light] .i-sun{display:none}:root[data-theme=light] .i-moon{display:block}
+
 @media (max-width:640px){
-  .brand{display:flex}
-  .topnav-in{gap:.5rem;padding:.45rem .75rem;justify-content:space-between}
+  .brand{display:none!important}
+  .desktop-nav{display:none!important}
+  .topnav-in{display:flex!important;justify-content:flex-end!important;align-items:center!important;position:static!important;padding:.45rem .75rem!important}
+  .nav-actions{position:static!important;display:flex!important;align-items:center!important;gap:.5rem!important}
   .cv-btn{padding:.34rem .65rem;font-size:.74rem}
   .theme-btn{width:2.05rem;height:2.05rem}
 }
@@ -597,16 +611,17 @@ main>.grid>section{margin-top:0!important}
     border-bottom-color: var(--line) !important;
   }
   .topnav-in {
-    padding: 0.5rem 0.85rem !important;
+    padding: 0.45rem 0.85rem !important;
     display: flex !important;
-    justify-content: space-between !important;
+    justify-content: flex-end !important;
     align-items: center !important;
     gap: 0.5rem !important;
   }
   .brand {
-    display: flex !important;
-    font: 700 0.95rem/1 Poppins, sans-serif !important;
-    letter-spacing: -0.02em !important;
+    display: none !important;
+  }
+  .desktop-nav {
+    display: none !important;
   }
   .dock {
     position: fixed !important;
@@ -983,12 +998,20 @@ main>.grid>section{margin-top:0!important}
 
 <header class="topnav"><div class="topnav-in">
   <a href="#home" class="brand">Pooja<span>.dev</span></a>
+  <nav aria-label="Primary navigation" class="desktop-nav"><ul>
+    <li><a href="#home"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>Overview</span></a></li>
+    <li><a href="#education"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg><span>Edu</span></a></li>
+    <li><a href="#stack"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span>Skills</span></a></li>
+    <li><a href="#projects"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg><span>Projects</span></a></li>
+    <li><a href="#credentials"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg><span>Awards</span></a></li>
+    <li><a href="#contact"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Contact</span></a></li>
+  </ul></nav>
   <div class="nav-actions"><a class="cv-btn" href="Pooja_Anbalagan_CV.pdf" target="_blank" rel="noopener" download>CV</a>
   <button id="theme" type="button" class="theme-btn" aria-label="Switch to light theme"><svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.900 4.900l1.400 1.400M17.700 17.700l1.400 1.400M4.900 19.100l1.400-1.400M17.700 6.300l1.400-1.400"/></svg><svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.500A8 8 0 0 1 9.500 4 8 8 0 1 0 20 14.500z"/></svg></button></div>
 </div></header>
 
-<!-- Down & Freezed Bottom Navigation Bar -->
-<nav aria-label="Primary" class="dock"><ul>
+<!-- Down & Freezed Bottom Navigation Bar for Mobile -->
+<nav aria-label="Mobile Navigation" class="mobile-dock dock"><ul>
   <li><a href="#home"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>Overview</span></a></li>
   <li><a href="#education"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg><span>Edu</span></a></li>
   <li><a href="#stack"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span>Skills</span></a></li>
@@ -1283,16 +1306,21 @@ main>.grid>section{margin-top:0!important}
     btn.addEventListener('click', () => { const t = root.dataset.theme === 'light' ? 'dark' : 'light'; apply(t); try { localStorage.setItem('theme', t); } catch (e) {} });
   })();
 
-  // Active dock link
-  const links = [...document.querySelectorAll('.dock a')];
-  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  // Active navigation link sync (desktop header & mobile dock)
+  const navLinks = [...document.querySelectorAll('.dock a, .desktop-nav a')];
+  const sectionIds = ['home', 'education', 'stack', 'projects', 'credentials', 'contact'];
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => {
-      if (en.isIntersecting) links.forEach(a => a.setAttribute('aria-current', a === map.get(en.target.id)));
+      if (en.isIntersecting) {
+        navLinks.forEach(a => {
+          const match = a.getAttribute('href') === '#' + en.target.id;
+          a.setAttribute('aria-current', match ? 'true' : 'false');
+        });
+      }
     });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  map.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
-  links[0].setAttribute('aria-current', 'true');
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  sectionIds.forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); });
+  navLinks.filter(a => a.getAttribute('href') === '#home').forEach(a => a.setAttribute('aria-current', 'true'));
 
   // Count-up for metrics (final values are already in the markup, so no layout shift or JS dependence)
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
