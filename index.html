@@ -362,16 +362,16 @@ html .reveal .sg,html .reveal .cred-card{transition:opacity .7s ease calc(var(--
 .gh-total{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
 .gh-all{font-size:.85rem;font-weight:600;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;text-decoration-color:rgb(var(--k-cl))}
 .gh-all:hover{color:rgb(var(--k-cl))}
-.cg-box{padding:1rem 1.1rem;border-radius:1rem;border:1px solid var(--line2);background:rgb(var(--t-page)/.5)}
-.cg-scroll{overflow-x:auto;padding-bottom:.4rem;--cs:12px;--cg:3px}
+.cg-box{padding:1.4rem 1.5rem;border-radius:1rem;border:1px solid var(--line2);background:rgb(var(--t-page)/.5)}
+.cg-scroll{overflow-x:auto;padding-bottom:.4rem;--cs:12px;--cg:4px}
 .cg{display:grid;grid-template-columns:auto max-content;column-gap:.6rem;row-gap:.35rem;width:max-content}
 .cg-months,.cg-grid{display:grid;column-gap:var(--cg)}
-.cg-months{grid-column:2;grid-row:1;font:500 .7rem JetBrains Mono,monospace;color:var(--mut);height:.9rem}
+.cg-months{grid-column:2;grid-row:1;font:500 .78rem JetBrains Mono,monospace;color:var(--mut);height:1.1rem}
 .cg-months span{grid-row:1;white-space:nowrap}
-.cg-dow{grid-column:1;grid-row:2;display:grid;grid-template-rows:repeat(7,var(--cs));row-gap:var(--cg);font:500 .66rem JetBrains Mono,monospace;color:var(--mut)}
-.cg-dow span{line-height:var(--cs);white-space:nowrap}
+.cg-dow{grid-column:1;grid-row:2;display:grid;grid-template-rows:repeat(7,var(--cs));row-gap:var(--cg);font:500 .72rem JetBrains Mono,monospace;color:var(--mut)}
+.cg-dow span{line-height:var(--cs);white-space:nowrap;display:flex;align-items:center}
 .cg-grid{grid-column:2;grid-row:2;grid-template-rows:repeat(7,var(--cs));grid-auto-flow:column;row-gap:var(--cg)}
-.cg-c{display:block;width:var(--cs,12px);height:var(--cs,12px);border-radius:3px;background:rgb(var(--t-chip)/.7);border:1px solid var(--line2)}
+.cg-c{display:block;width:var(--cs,12px);height:var(--cs,12px);border-radius:clamp(3px,calc(var(--cs,12px)*.22),6px);background:rgb(var(--t-chip)/.7);border:1px solid var(--line2)}
 .cg-c.l1{background:rgb(var(--k-cl)/.3);border-color:rgb(var(--k-cl)/.45)}
 .cg-c.l2{background:rgb(var(--k-cl)/.55);border-color:rgb(var(--k-cl)/.65)}
 .cg-c.l3{background:rgb(var(--k-cl)/.8);border-color:rgb(var(--k-cl)/.9)}
@@ -1493,8 +1493,19 @@ function render(d,stale){
   scroll.replaceChildren(cg);
   totalEl.textContent=d.total+' contributions in '+year;
   note.replaceChildren(stale?'Showing saved data; the contributions service is unreachable right now.':'');
-  // on narrow screens, scroll so the current week is in view
-  requestAnimationFrame(()=>{scroll.scrollLeft=Math.max(0,todayCol*15-scroll.clientWidth+60)});
+  // fit the graph to the card width (squares grow on wide screens, scroll on narrow ones)
+  const GAP=4, fit=()=>{
+    const avail=scroll.clientWidth-dow.offsetWidth-10-(weeks-1)*GAP;
+    const cs=Math.max(12,Math.min(30,Math.floor(avail/weeks)));
+    scroll.style.setProperty('--cs',cs+'px');
+    scroll.style.setProperty('--cg',GAP+'px');
+    return cs;
+  };
+  requestAnimationFrame(()=>{
+    const cs=fit();
+    scroll.scrollLeft=Math.max(0,todayCol*(cs+GAP)-scroll.clientWidth+60);
+    let t; addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(fit,120)});
+  });
 }
 function fail(){
   scroll.replaceChildren();
