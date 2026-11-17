@@ -356,6 +356,42 @@ html .reveal .sg,html .reveal .cred-card{transition:opacity .7s ease calc(var(--
 .ct-loc{margin-top:1.5rem;font:500 .75rem JetBrains Mono,monospace;color:var(--dim)}
 </style>
 <style>
+/* Now + contribution graph */
+.gh{margin-top:1.5rem}
+.gh-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;margin-bottom:1rem}
+.gh-total{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
+.gh-all{font-size:.85rem;font-weight:600;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;text-decoration-color:rgb(var(--k-cl))}
+.gh-all:hover{color:rgb(var(--k-cl))}
+.cg-box{padding:1rem 1.1rem;border-radius:1rem;border:1px solid var(--line2);background:rgb(var(--t-page)/.5)}
+.cg-scroll{overflow-x:auto;padding-bottom:.4rem;--cs:12px;--cg:3px}
+.cg{display:grid;grid-template-columns:auto max-content;column-gap:.6rem;row-gap:.35rem;width:max-content}
+.cg-months,.cg-grid{display:grid;column-gap:var(--cg)}
+.cg-months{grid-column:2;grid-row:1;font:500 .7rem JetBrains Mono,monospace;color:var(--mut);height:.9rem}
+.cg-months span{grid-row:1;white-space:nowrap}
+.cg-dow{grid-column:1;grid-row:2;display:grid;grid-template-rows:repeat(7,var(--cs));row-gap:var(--cg);font:500 .66rem JetBrains Mono,monospace;color:var(--mut)}
+.cg-dow span{line-height:var(--cs);white-space:nowrap}
+.cg-grid{grid-column:2;grid-row:2;grid-template-rows:repeat(7,var(--cs));grid-auto-flow:column;row-gap:var(--cg)}
+.cg-c{display:block;width:var(--cs,12px);height:var(--cs,12px);border-radius:3px;background:rgb(var(--t-chip)/.7);border:1px solid var(--line2)}
+.cg-c.l1{background:rgb(var(--k-cl)/.3);border-color:rgb(var(--k-cl)/.45)}
+.cg-c.l2{background:rgb(var(--k-cl)/.55);border-color:rgb(var(--k-cl)/.65)}
+.cg-c.l3{background:rgb(var(--k-cl)/.8);border-color:rgb(var(--k-cl)/.9)}
+.cg-c.l4{background:rgb(var(--k-ml));border-color:rgb(var(--k-ml))}
+.cg-grid .cg-c:hover{outline:2px solid rgb(var(--k-ml)/.8);outline-offset:1px}
+.cg-foot{margin-top:.7rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1rem;font:500 .72rem JetBrains Mono,monospace;color:var(--mut)}
+.cg-how{text-decoration:underline;text-underline-offset:3px}
+.cg-how:hover{color:rgb(var(--k-cl))}
+.cg-legend{display:flex;align-items:center;gap:.3rem}
+.cg-legend .cg-c{--cs:12px}
+.cg-skel{height:6.5rem}
+.gh-sk{border-radius:.85rem;background:rgb(var(--t-chip)/.7);animation:ghp 1.4s ease-in-out infinite}
+@keyframes ghp{50%{opacity:.45}}
+.gh-note{margin-top:.9rem;font-size:.8rem;color:var(--dim)}
+.gh-note a{text-decoration:underline;text-underline-offset:3px}
+:root[data-theme=light] .cg-box{background:#fff}
+@media (max-width:640px){.cg-box{padding:.85rem .75rem}.gh-total{font-size:1.05rem}}
+@media (prefers-reduced-motion:reduce){.gh-sk{animation:none}}
+</style>
+<style>
 /* structure, centered hero, dark-mode rework, fixes */
 main>.grid{gap:1.5rem;counter-reset:sec}
 main>.grid>section{margin-top:0!important}
@@ -1147,6 +1183,30 @@ body{padding-top:3.5rem}
       </ul>
     </section>
 
+    <!-- NOW + GITHUB ACTIVITY -->
+    <section style="--c:var(--k-cl)" id="activity" aria-labelledby="act-title" class="reveal tile p-6 sm:p-8 md:col-span-6 lg:col-span-12 mt-6">
+      <h2 id="act-title" class="text-2xl font-bold tracking-tight">GitHub contributions</h2>
+      <p class="mt-1 text-sm text-zinc-400">My coding activity on GitHub over the year.</p>
+
+      <div class="gh" id="gh" data-user="PoojaAnbalagan">
+        <div class="gh-head">
+          <p class="gh-total" id="gh-total" aria-live="polite">Loading contributions…</p>
+          <a class="gh-all" href="https://github.com/PoojaAnbalagan" target="_blank" rel="noopener noreferrer">View GitHub profile ↗</a>
+        </div>
+        <div class="cg-box">
+          <div class="cg-scroll" id="cg-scroll" tabindex="0" role="group" aria-label="GitHub contribution calendar, scrollable">
+            <div class="cg-skel gh-sk" id="cg-skel"></div>
+          </div>
+          <div class="cg-foot">
+            <a class="cg-how" href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/managing-contribution-settings-on-your-profile/viewing-contributions-on-your-profile" target="_blank" rel="noopener noreferrer">How contributions are counted ↗</a>
+            <div class="cg-legend" aria-hidden="true">Less <i class="cg-c"></i><i class="cg-c l1"></i><i class="cg-c l2"></i><i class="cg-c l3"></i><i class="cg-c l4"></i> More</div>
+          </div>
+        </div>
+        <p id="gh-note" class="gh-note" role="status"></p>
+        <noscript><p class="gh-note"><a href="https://github.com/PoojaAnbalagan" target="_blank" rel="noopener noreferrer">See my contribution graph on GitHub ↗</a></p></noscript>
+      </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact" aria-labelledby="contact-title" class="ct reveal md:col-span-6 lg:col-span-12 mt-6">
       <p class="ct-k">Contact</p>
@@ -1378,6 +1438,76 @@ if (document.readyState === 'loading') {
 } else {
   initGoTop();
 }
+})();
+</script>
+
+<script>
+/* GitHub contribution graph: fetched client-side from a public contributions API,
+   cached for 6 hours, rendered with DOM methods only, falls back to a profile link. */
+(()=>{
+const box=document.getElementById('gh'); if(!box) return;
+const user=box.dataset.user, year=new Date().getFullYear();
+const scroll=document.getElementById('cg-scroll'), totalEl=document.getElementById('gh-total'), note=document.getElementById('gh-note');
+const KEY='cg:'+user+':'+year, TTL=6*60*60*1000;
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const readCache=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){return null}};
+
+async function load(){
+  const c=readCache();
+  if(c&&Date.now()-c.t<TTL)return{d:c.d,stale:false};
+  try{
+    const r=await fetch('https://github-contributions-api.jogruber.de/v4/'+encodeURIComponent(user)+'?y='+year);
+    if(!r.ok)throw new Error(r.status);
+    const j=await r.json();
+    if(!j||!Array.isArray(j.contributions)||!j.contributions.length)throw new Error('empty');
+    const d={total:(j.total&&j.total[year])||j.contributions.reduce((a,x)=>a+x.count,0),
+             days:j.contributions.map(x=>({d:x.date,c:x.count,l:Math.max(0,Math.min(4,x.level|0))}))};
+    try{localStorage.setItem(KEY,JSON.stringify({t:Date.now(),d}))}catch(e){}
+    return{d,stale:false};
+  }catch(err){ if(c)return{d:c.d,stale:true}; throw err; }
+}
+
+function render(d,stale){
+  const days=d.days, [y0,m0,d0]=days[0].d.split('-').map(Number);
+  const pad=new Date(Date.UTC(y0,m0-1,d0)).getUTCDay();          // Sunday-first, like GitHub
+  const weeks=Math.ceil((pad+days.length)/7);
+  const cols='repeat('+weeks+',var(--cs))';
+
+  const cg=el('div','cg'), months=el('div','cg-months'), grid=el('div','cg-grid'), dow=el('div','cg-dow');
+  months.style.gridTemplateColumns=cols; grid.style.gridTemplateColumns=cols;
+  ['','Mon','','Wed','','Fri',''].forEach(t=>dow.append(el('span',null,t)));
+
+  let lastM=-1, todayCol=0; const todayStr=new Date().toISOString().slice(0,10);
+  days.forEach((x,i)=>{
+    const [yy,mm,dd]=x.d.split('-').map(Number), col=Math.floor((pad+i)/7)+1;
+    if(mm-1!==lastM){ lastM=mm-1; const s=el('span',null,MON[mm-1]); s.style.gridColumn=String(col); months.append(s); }
+    const c=el('i','cg-c'+(x.l?' l'+x.l:''));
+    if(i===0)c.style.gridRow=String(pad+1);
+    const when=new Date(Date.UTC(yy,mm-1,dd)).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
+    c.title=(x.c?x.c+' contribution'+(x.c>1?'s':''):'No contributions')+' on '+when;
+    if(x.d<=todayStr)todayCol=col;
+    grid.append(c);
+  });
+  cg.append(months,dow,grid);
+  scroll.replaceChildren(cg);
+  totalEl.textContent=d.total+' contributions in '+year;
+  note.replaceChildren(stale?'Showing saved data; the contributions service is unreachable right now.':'');
+  // on narrow screens, scroll so the current week is in view
+  requestAnimationFrame(()=>{scroll.scrollLeft=Math.max(0,todayCol*15-scroll.clientWidth+60)});
+}
+function fail(){
+  scroll.replaceChildren();
+  totalEl.textContent='Contribution graph unavailable';
+  const a=el('a',null,'See my contribution graph on GitHub ↗');a.href='https://github.com/'+user;a.target='_blank';a.rel='noopener noreferrer';
+  note.replaceChildren('Live data could not be loaded right now. ',a);
+}
+let started=false;
+const start=()=>{if(started)return;started=true;load().then(r=>render(r.d,r.stale)).catch(fail)};
+if('IntersectionObserver'in window){
+  const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();start()}},{rootMargin:'300px 0px'});
+  io.observe(box);
+}else start();
 })();
 </script>
 
