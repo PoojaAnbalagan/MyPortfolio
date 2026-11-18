@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta name="color-scheme" content="dark light">
 <script>(function(d){d.dataset.pal="b";try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";d.dataset.theme=t;}catch(e){}})(document.documentElement)</script>
-<script>document.documentElement.classList.add("js-loading")</script>
+<script>(function(){var d=document.documentElement;d.classList.add("js-loading");try{if(sessionStorage.getItem("introSeen")==="1")d.classList.add("intro-seen")}catch(e){}})()</script>
 <noscript><style>#loader{display:none!important}html.js-loading{overflow:auto}.stage{height:auto!important}.pcard{position:relative!important;left:auto!important;top:auto!important;transform:none!important;margin:0 auto 1.25rem;height:auto!important}.pcard:after{display:none}.pdesc{-webkit-line-clamp:unset!important}.caret{display:none}</style></noscript>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23bef264'/><stop offset='50%25' stop-color='%2334d399'/><stop offset='100%25' stop-color='%2338bdf8'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='%2307120e'/><rect x='2.5' y='2.5' width='59' height='59' rx='14' fill='none' stroke='url(%23g)' stroke-width='2.5' stroke-opacity='0.7'/><path d='M19 23L11 32L19 41' stroke='url(%23g)' stroke-width='3.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M45 23L53 32L45 41' stroke='url(%23g)' stroke-width='3.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/><circle cx='32' cy='32' r='6.5' fill='url(%23g)'/><path d='M32 17V24M32 40V47' stroke='url(%23g)' stroke-width='3' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,6 +76,9 @@
 .portrait-frame:before{content:"";position:absolute;inset:-10px;border-radius:2.1rem;border:1px dashed rgb(var(--k-cl)/.35);transform:rotate(-5deg)}
 .portrait-frame span{font-size:4.5rem;font-weight:800;letter-spacing:-.04em;background:linear-gradient(100deg,#fff,var(--paper) 50%,rgb(var(--k-ml)));-webkit-background-clip:text;background-clip:text;color:transparent}
 .portrait figcaption{font-size:.75rem;color:var(--dim)}
+html.intro-seen #loader{display:none!important}
+.about.about2{margin-top:1rem;padding-top:0;border-top:0;max-width:46rem}
+.about2-open{margin-top:1.4rem}
 .about{margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08);max-width:44rem}
 .about-h{font-size:1.15rem;font-weight:700;line-height:1.45;color:var(--paper)}
 @media (min-width:640px){.about-h{font-size:1.3rem}}
@@ -131,6 +134,7 @@ main{padding-bottom:4rem!important}
 .dock li{flex:1!important;display:flex!important;justify-content:center!important;margin:0!important}
 .dock a{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;padding:.32rem .15rem!important;border-radius:.85rem!important;width:100%!important;max-width:4.2rem!important;min-height:2.85rem!important;font-size:.65rem!important;font-weight:500!important;letter-spacing:.01em!important;color:var(--dim)!important;background:transparent!important;border:1px solid transparent!important;transition:all .2s cubic-bezier(.2,.8,.2,1)!important;gap:.16rem!important;text-decoration:none!important;white-space:nowrap!important}
 .dock a span{line-height:1.1!important}
+.dock a span.long{font-size:.56rem}
 .dock a[aria-current=true]{color:rgb(var(--k-ml))!important;background:rgb(var(--k-ml)/.16)!important;border-color:rgb(var(--k-ml)/.4)!important;box-shadow:0 2px 10px -2px rgb(var(--k-ml)/.35)!important;font-weight:700!important}
 :root[data-theme=light] .dock a[aria-current=true]{color:color-mix(in srgb,rgb(var(--k-ml)) 75%,#000)!important;background:rgb(var(--k-ml)/.14)!important;border-color:rgb(var(--k-ml)/.45)!important}
 .dock a[aria-current=true] .dock-ic{transform:scale(1.08)!important;stroke:rgb(var(--k-ml))!important}
@@ -1045,7 +1049,7 @@ body{padding-top:3.5rem}
     <li><a href="#education"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg><span>Edu</span></a></li>
     <li><a href="#stack"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span>Skills</span></a></li>
     <li><a href="#projects"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg><span>Projects</span></a></li>
-    <li><a href="#credentials"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg><span>Awards</span></a></li>
+    <li><a href="#credentials"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg><span>Achievements</span></a></li>
     <li><a href="#contact"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Contact</span></a></li>
   </ul></nav>
   <div class="nav-actions"><a class="cv-btn" href="Pooja_Anbalagan_CV.pdf" target="_blank" rel="noopener" download>CV</a>
@@ -1058,7 +1062,7 @@ body{padding-top:3.5rem}
   <li><a href="#education"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg><span>Edu</span></a></li>
   <li><a href="#stack"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span>Skills</span></a></li>
   <li><a href="#projects"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg><span>Projects</span></a></li>
-  <li><a href="#credentials"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg><span>Awards</span></a></li>
+  <li><a href="#credentials"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg><span class="long">Achievements</span></a></li>
   <li><a href="#contact"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Contact</span></a></li>
 </ul></nav>
 
@@ -1090,6 +1094,20 @@ body{padding-top:3.5rem}
 
           </section>
 
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-title" class="reveal tile p-6 sm:p-8 md:col-span-6 lg:col-span-12">
+      <h2 id="about-title" class="text-2xl font-bold tracking-tight">About me</h2>
+      <div class="about about2">
+        <p class="about-h">I'm a Data Science undergraduate who likes taking machine learning past the notebook: trained, containerised and running somewhere real.</p>
+        <p>I'm studying for a B.Sc. (Hons) in Data Science at Sabaragamuwa University of Sri Lanka (2024 – 2028), with a focus on AI/ML, MLOps and cloud. In 2026 I won 1st prize at IEEE WIE AURELIYA 2.0, placed 2nd at CodeRally 7.0, and reached the finals of several other hackathons.</p>
+        <p>Outside code, I write content and design graphics for the Rotaract Club of SUSL, which keeps me honest about explaining technical work clearly.</p>
+      </div>
+      <div class="about2-open">
+        <p class="edu2-k">Open to</p>
+        <ul class="edu2-c"><li>AI/ML internships</li><li>Data science roles</li><li>MLOps &amp; cloud</li></ul>
+      </div>
+    </section>
 
     <!-- EDUCATION -->
     <section id="education" aria-labelledby="edu-title" class="reveal tile p-6 sm:p-8 md:col-span-6 lg:col-span-12">
@@ -1263,28 +1281,33 @@ body{padding-top:3.5rem}
       setTimeout(loop, 450);
     }
 
+    // Repeat visit in the same session: skip the intro entirely
+    let seen = false; try { seen = sessionStorage.getItem('introSeen') === '1'; } catch (e) {}
+    if (seen) { loader.remove(); html.classList.remove('js-loading'); startTyping(); return; }
+
     let done = false;
     function reveal() {
       if (done) return; done = true; loader.classList.add('done');
+      try { sessionStorage.setItem('introSeen', '1'); } catch (e) {}
       setTimeout(() => { html.classList.remove('js-loading'); startTyping(); }, 450);
       setTimeout(() => loader.remove(), 1800);
     }
     document.getElementById('skip').onclick = reveal;
     addEventListener('keydown', e => { if (e.key === 'Escape') reveal(); });
-    setTimeout(reveal, 7000);
+    setTimeout(reveal, 3000);
 
     const steps = ['importing dataset.csv', 'training model, epoch 3/3', 'containerizing with docker', 'deploying to kubernetes'];
     const th = [0, 25, 52, 80], box = loader.querySelector('.llines');
     steps.forEach(t => { const d = document.createElement('div'); d.innerHTML = '<span class="mk">›</span> ' + t; box.appendChild(d); });
     const num = loader.querySelector('.lcount'), bar = loader.querySelector('.lbar i');
-    let shown = -1; const t0 = performance.now(), dur = reduce ? 700 : 2700;
+    let shown = -1; const t0 = performance.now(), dur = reduce ? 500 : 1200;
     const mark = k => { const m = box.children[k].querySelector('.mk'); m.textContent = '✓'; m.classList.add('ok'); };
     function frame(now) {
       if (done) return;
       const p = Math.min((now - t0) / dur, 1), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2, v = Math.round(e * 100);
       num.textContent = v; bar.style.transform = 'scaleX(' + e + ')';
       while (shown < 3 && v >= th[shown + 1]) { if (shown >= 0) mark(shown); shown++; box.children[shown].classList.add('on'); }
-      if (p < 1) requestAnimationFrame(frame); else { mark(shown); setTimeout(reveal, 400); }
+      if (p < 1) requestAnimationFrame(frame); else { mark(shown); setTimeout(reveal, 150); }
     }
     requestAnimationFrame(frame);
   })();
