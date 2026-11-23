@@ -9,6 +9,12 @@
 <meta property="og:title" content="Pooja Anbalagan · AI/ML Engineer & Data Science Undergraduate">
 <meta property="og:description" content="ML systems, MLOps pipelines and cloud workflows by a Data Science undergraduate at Sabaragamuwa University of Sri Lanka.">
 <meta property="og:type" content="website">
+<meta name="author" content="Pooja Anbalagan">
+<meta name="keywords" content="Pooja Anbalagan, Data Science, AI, Machine Learning, MLOps, AWS, portfolio, Sri Lanka">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pooja Anbalagan · AI/ML Engineer &amp; Data Science Undergraduate">
+<meta name="twitter:description" content="ML systems, MLOps pipelines and cloud workflows by a Data Science undergraduate in Sri Lanka.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Pooja Anbalagan","jobTitle":"Data Science Undergraduate","email":"mailto:poojaap356@gmail.com","alumniOf":{"@type":"CollegeOrUniversity","name":"Sabaragamuwa University of Sri Lanka"},"address":{"@type":"PostalAddress","addressLocality":"Wattala","addressCountry":"LK"},"knowsAbout":["Machine Learning","MLOps","Cloud Computing","Data Science"],"sameAs":["https://github.com/PoojaAnbalagan","https://linkedin.com/in/pooja-anbalagan"]}</script>
 <meta name="color-scheme" content="dark light">
 <script>(function(d){d.dataset.pal="b";try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";d.dataset.theme=t;}catch(e){}})(document.documentElement)</script>
 <script>(function(){var d=document.documentElement;d.classList.add("js-loading");try{if(sessionStorage.getItem("introSeen")==="1")d.classList.add("intro-seen")}catch(e){}})()</script>
@@ -1024,6 +1030,37 @@ main>.grid>section{margin-top:0!important}
 body{padding-top:3.5rem}
 @media (max-width:640px){body{padding-top:3.1rem}}
 </style>
+<style>
+/* ===== v2 additions ===== */
+.ab p.lead{margin-top:.9rem;max-width:46rem;font-size:1.05rem;line-height:1.75;color:var(--mut)}
+.ab p.lead b{color:var(--tx);font-weight:600}
+.stats{margin-top:1.75rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+@media (min-width:768px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.stat{padding:1.1rem 1.2rem;border-radius:1.1rem;border:1px solid var(--line2);background:rgb(var(--t-chip)/.5)}
+.stat strong{display:block;font-size:2rem;font-weight:800;letter-spacing:-.03em;line-height:1.1;background:linear-gradient(100deg,rgb(var(--k-ml)),rgb(var(--k-cl)));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{display:block;margin-top:.3rem;font-size:.78rem;color:var(--mut)}
+#pal{border:1px solid var(--line2);border-radius:1.1rem;background:var(--card);color:var(--tx);padding:0;width:min(32rem,92vw);margin:12vh auto auto;box-shadow:0 40px 100px -30px rgb(0 0 0/.7)}
+#pal::backdrop{background:rgb(0 0 0/.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+#pal-q{display:block;width:100%;padding:1rem 1.1rem;background:transparent;border-bottom:1px solid var(--line);font-size:.95rem;outline:none}
+#pal-list{max-height:min(50vh,22rem);overflow:auto;padding:.4rem}
+#pal-list li{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.6rem .8rem;border-radius:.7rem;font-size:.88rem;cursor:pointer;color:var(--mut)}
+#pal-list li[aria-selected=true]{background:rgb(var(--k-ml)/.16);color:var(--tx)}
+#pal-list li small{font:500 .66rem JetBrains Mono,monospace;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+.pal-hint{padding:.55rem 1rem;border-top:1px solid var(--line);font:500 .68rem JetBrains Mono,monospace;color:var(--dim)}
+@media (max-width:640px){.pal-hint{display:none}}
+@media print{
+  .topnav,.dock,#loader,.ambient,#progress,.go-top-btn,.hero-visual,.hero-bg,#pal,#activity,#projects .mt-2.flex,.cv-btn,.skip{display:none!important}
+  html,body{background:#fff!important;color:#000!important;overflow:visible!important;padding-top:0!important}
+  body:before{display:none}
+  .reveal.pre,.reveal.pre .sg,.reveal.pre .cred-card,.rise{opacity:1!important;translate:none!important;animation:none!important}
+  .tile,.cred-card,.pcard,.stat{background:#fff!important;border-color:#bbb!important;box-shadow:none!important;break-inside:avoid;color:#000!important}
+  .stage{height:auto!important;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .pcard{position:relative!important;left:auto!important;top:auto!important;transform:none!important;width:auto!important;height:auto!important}
+  .pcard:after{display:none}.pdesc{-webkit-line-clamp:unset!important}
+  .track{animation:none!important;flex-wrap:wrap!important;width:auto!important}.track [aria-hidden]{display:none}
+  *{color:#000!important;-webkit-text-fill-color:#000!important}
+}
+</style>
 </head>
 <body class="font-sans">
 <div id="progress" aria-hidden="true"></div>
@@ -1051,6 +1088,7 @@ body{padding-top:3.5rem}
     <li><a href="#contact"><svg class="dock-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Contact</span></a></li>
   </ul></nav>
   <div class="nav-actions"><a class="cv-btn" href="Pooja_Anbalagan_CV.pdf" target="_blank" rel="noopener" download>CV</a>
+  <button id="pal-open" type="button" class="theme-btn" aria-label="Open quick search (Ctrl+K)" title="Quick search (Ctrl+K or /)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
   <button id="theme" type="button" class="theme-btn" aria-label="Switch to light theme"><svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.900 4.900l1.400 1.400M17.700 17.700l1.400 1.400M4.900 19.100l1.400-1.400M17.700 6.300l1.400-1.400"/></svg><svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.500A8 8 0 0 1 9.500 4 8 8 0 1 0 20 14.500z"/></svg></button></div>
 </div></header>
 
@@ -1092,6 +1130,19 @@ body{padding-top:3.5rem}
 
           </section>
 
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-title" class="reveal tile ab p-6 sm:p-8 md:col-span-6 lg:col-span-12">
+      <h2 id="about-title" class="text-2xl font-bold tracking-tight">About me</h2>
+      <p class="lead">I'm a Data Science undergraduate at <b>Sabaragamuwa University of Sri Lanka</b>, interested in what happens after the notebook: packaging models, automating pipelines and running them on real infrastructure.</p>
+      <p class="lead">My work spans a DistilBERT sentiment platform, a 112-class crop disease classifier and an event-driven AWS churn pipeline, alongside full-stack apps and hackathons. I'm looking for <b>AI/ML, data or cloud internships</b>.</p>
+      <div class="stats" role="list">
+        <div class="stat" role="listitem"><strong><span data-count="8" data-dec="0" style="display:inline;margin:0;font-size:inherit;color:inherit">8</span></strong><span>Featured projects</span></div>
+        <div class="stat" role="listitem"><strong><span data-count="6" data-dec="0" style="display:inline;margin:0;font-size:inherit;color:inherit">6</span></strong><span>Competitions entered</span></div>
+        <div class="stat" role="listitem"><strong><span data-count="2" data-dec="0" style="display:inline;margin:0;font-size:inherit;color:inherit">2</span></strong><span>Podium finishes (1st, 2nd)</span></div>
+        <div class="stat" role="listitem"><strong><span data-count="95.28" data-dec="2" style="display:inline;margin:0;font-size:inherit;color:inherit">95.28</span>%</strong><span>AgroGuard-AI top-1 accuracy</span></div>
+      </div>
+    </section>
 
     <!-- EDUCATION -->
     <section id="education" aria-labelledby="edu-title" class="reveal tile p-6 sm:p-8 md:col-span-6 lg:col-span-12">
@@ -1535,5 +1586,68 @@ if('IntersectionObserver'in window){
     <path d="M18 15l-6-6-6 6"/>
   </svg>
 </button>
+<dialog id="pal" aria-label="Quick search">
+  <input id="pal-q" type="text" placeholder="Jump to a section, project or action…" autocomplete="off" aria-label="Search commands">
+  <ul id="pal-list" role="listbox"></ul>
+  <p class="pal-hint">↑↓ navigate · Enter select · Esc close</p>
+</dialog>
+<script>
+(()=>{
+const $=id=>document.getElementById(id);
+// Follow OS theme changes until the visitor picks one manually
+try{matchMedia('(prefers-color-scheme: light)').addEventListener('change',e=>{
+  let saved=null;try{saved=localStorage.getItem('theme')}catch(x){}
+  if(saved)return;const t=e.matches?'light':'dark';document.documentElement.dataset.theme=t;
+  $('theme').setAttribute('aria-label',t==='light'?'Switch to dark theme':'Switch to light theme');
+})}catch(e){}
+// Quick-search command palette
+const dlg=$('pal');if(!dlg||!dlg.showModal){$('pal-open').hidden=true;return}
+const q=$('pal-q'),list=$('pal-list');
+const go=id=>()=>{const e=$(id);if(e)e.scrollIntoView({behavior:'smooth',block:'start'})};
+const cmds=[['Overview','home'],['About me','about'],['Education','education'],['Skills & tech stack','stack'],['Featured projects','projects'],['Achievements','credentials'],['GitHub contributions','activity'],['Contact','contact']]
+  .map(([t,id])=>({t:'Go to '+t,k:'section',f:go(id)}));
+document.querySelectorAll('#stage .pcard').forEach(c=>cmds.push({t:'Project: '+c.getAttribute('aria-label'),k:'project',f:()=>{
+  go('projects')();
+  setTimeout(()=>{c.click()},400);
+}}));
+cmds.push(
+ {t:'Toggle light / dark theme',k:'action',f:()=>$('theme').click()},
+ {t:'Copy email address',k:'action',f:()=>$('copy-btn').click()},
+ {t:'Download CV',k:'action',f:()=>{const a=document.querySelector('a[href$="CV.pdf"]');if(a)a.click()}},
+ {t:'Open GitHub profile',k:'link',f:()=>window.open('https://github.com/PoojaAnbalagan','_blank','noopener')},
+ {t:'Open LinkedIn profile',k:'link',f:()=>window.open('https://linkedin.com/in/pooja-anbalagan','_blank','noopener')},
+ {t:'Send an email',k:'link',f:()=>{location.href='mailto:poojaap356@gmail.com'}}
+);
+let sel=0,shown=[];
+const run=i=>{const c=shown[i];if(!c)return;dlg.close();setTimeout(c.f,60)};
+function render(){
+  const s=q.value.trim().toLowerCase();
+  shown=cmds.filter(c=>!s||c.t.toLowerCase().includes(s)||c.k.includes(s));
+  sel=Math.max(0,Math.min(sel,shown.length-1));
+  const items=shown.map((c,i)=>{
+    const li=document.createElement('li');li.setAttribute('role','option');li.setAttribute('aria-selected',String(i===sel));
+    const a=document.createElement('span');a.textContent=c.t;const b=document.createElement('small');b.textContent=c.k;
+    li.append(a,b);li.addEventListener('click',()=>run(i));return li;
+  });
+  if(!items.length){const li=document.createElement('li');li.textContent='No matches';items.push(li)}
+  list.replaceChildren(...items);
+  const cur=list.children[sel];if(cur&&cur.scrollIntoView)cur.scrollIntoView({block:'nearest'});
+}
+const open=()=>{if(dlg.open)return;q.value='';sel=0;render();dlg.showModal();q.focus()};
+$('pal-open').addEventListener('click',open);
+q.addEventListener('input',()=>{sel=0;render()});
+q.addEventListener('keydown',e=>{
+  if(e.key==='ArrowDown'){e.preventDefault();sel=Math.min(sel+1,shown.length-1);render()}
+  else if(e.key==='ArrowUp'){e.preventDefault();sel=Math.max(sel-1,0);render()}
+  else if(e.key==='Enter'){e.preventDefault();run(sel)}
+});
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+addEventListener('keydown',e=>{
+  const typing=/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement&&document.activeElement.tagName);
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();dlg.open?dlg.close():open()}
+  else if(e.key==='/'&&!typing&&!dlg.open){e.preventDefault();open()}
+});
+})();
+</script>
 </body>
 </html>
